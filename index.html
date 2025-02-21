@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bulletin de Paie</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="script.js"></script>     
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .btn{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #download-pdf {
+        padding: 10px 20px;
+        background-color: #2563eb;
+        color: white;
+        font-weight: bold;
+        font-size: 16px;
+        border: none;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        transition: background 0.3s ease-in-out, transform 0.2s;
+    }
+
+    #download-pdf:hover {
+        background-color: #1e40af;
+        transform: scale(1.05);
+    }
+
+    #download-pdf:active {
+        background-color: #1c3faa;
+        transform: scale(0.98);
+    }
+    </style>
+</head>
+<body>
+    <div class="container" id="bulletin">
+        <div class="header">
+            <p class="title">BULLETIN DE PAIE</p>
+            <div class="header-top">
+                <div class="header-info">
+                    <div><strong>Société:</strong><span>STE TUNISIENNE INDUSTRIELLE DES TAPIS</span></div>
+                    <div><strong>Adresse:</strong><span>Zone industrielle, Sidi el Heni 4025 Sousse - Tunisie</span></div>
+                    <div><strong>Affiliation CNSS:</strong><span>00010202-99</span></div>
+                </div>
+                <div class="header-info">
+                    <div><strong>Année:</strong><span>2025</span></div>
+                    <div><strong>Mois de paie:</strong><span>Mars</span></div>
+                    <div><strong>Date de paiement:</strong><span>31/03/2015</span></div>
+                </div>
+            </div>
+            <div class="header-box">
+                <div class="header-info">
+                    <div><strong>Matricule:</strong><span>1</span></div>
+                    <div><strong>CIN:</strong><span>94571014</span></div>
+                    <div><strong>N° CNSS:</strong><span>12647500-05</span></div>
+                    <div><strong>Situation familiale:</strong><span>Célibataire</span></div>
+                    <div><strong>Enfant à charge:</strong><span>0</span></div>
+                </div>
+                <div class="header-info">
+                    <div><strong>Emploi:</strong><span>Technicien régieur</span></div>
+                    <div><strong>Catégorie:</strong><span>5</span></div>
+                    <div><strong>Echelon:</strong><span>3</span></div>
+                    <div><strong>Salaire De Base:</strong><span>496.704</span></div>
+                    <div><strong>Taux Horaire:</strong><span>2.388</span></div>
+                </div>
+                <div class="header-info">
+                    <div><strong>Nom & Prénom:</strong><span>Mohamed Moez Challouf</span></div>
+                    <div><strong>Adresse:</strong><span>21 Rue Ibn El Kateb</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <table>
+                <tr>
+                    <th rowspan="2" style="text-align: center;">Désignation</th>
+                    <th rowspan="2" style="text-align: center;">Nombre</th>
+                    <th rowspan="2" style="text-align: center;">Base</th>
+                    <th colspan="3" style="text-align: center;">Part salariale</th>
+                    <th colspan="3" style="text-align: center;">Part patronale</th>
+                </tr>
+                <tr>
+                    <th style="text-align: center;">Taux en %</th>
+                    <th style="text-align: center;">Gain</th>
+                    <th style="text-align: center;">Retenue</th>
+                    <th style="text-align: center;">Taux</th>
+                    <th style="text-align: center;">Gain</th>
+                    <th style="text-align: center;">Retenue</th>
+                </tr>
+                <tr>
+                    <td>Salaire de base</td>
+                    <td>208</td>
+                    <td>2.388</td>
+                    <td></td>
+                    <td>496.704</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Prime de présence</td>
+                    <td>1</td>
+                    <td>8.445</td>
+                    <td></td>
+                    <td>8.445</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Indemnité de transport</td>
+                    <td>1</td>
+                    <td>73.158</td>
+                    <td></td>
+                    <td>73.158</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Prime de panier</td>
+                    <td>1</td>
+                    <td>13.086</td>
+                    <td></td>
+                    <td>13.086</td>
+                    <td>0.000</td>
+                    <td></td>
+                    <td>0.000</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Heures supplémentaires</td>
+                    <td>16</td>
+                    <td>6.578</td>
+                    <td></td>
+                    <td>210.496</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td style="height: 50px;"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td style="text-align: center;"><strong>Total Brut</strong></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><strong>591.393</strong></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="final-row">
+                    <td>Retenue CNSS</td>
+                    <td></td>
+                    <td>591.393</td>
+                    <td>9.18</td>
+                    <td></td>
+                    <td>54.290</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Contribution patronale</td>
+                    <td></td>
+                    <td>591.393</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>16.57</td>
+                    <td></td>
+                    <td>97.994</td>
+                </tr>
+                <tr>
+                    <td>Cotisation accident de travail</td>
+                    <td></td>
+                    <td>591.393</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>2.1</td>
+                    <td></td>
+                    <td>12.419</td>
+                </tr>
+                <tr>
+                    <td style="height: 20px;"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td style="text-align: center;"><strong>Total cotisation</strong></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><strong>54.290</strong></td>
+                    <td></td>
+                    <td></td>
+                    <td><strong>110.413</strong></td>
+                </tr>
+                <tr class="final-row">
+                    <td>Salaire Brut Imposable</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>537.103</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td style="height: 5px;"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Déduction Situation familiale</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>0.000</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Déduction Frais professionnels</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>644.524</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Autres Déductions</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>0.000</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td style="height: 5px;"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>IRPP</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>17.349</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Contribution Sociale Solidaire</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>4.834</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="final-row">
+                    <td>Salaire Net</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>514.920</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Avance</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>300.000</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Net à payer</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>214.920</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr style="border-top: 1px solid black; border-bottom: 1px solid black;">
+                    <td colspan="8"></td>
+                    <td style="text-align: center; padding:2px;"><strong>Net à payer en dinars <br>214.920</strong></td>
+                </tr>
+            </table>
+            <div class="section">
+                <div class="payment-info">
+                    <div class="payment-method">
+                        <table>
+                            <div class="section" style="margin-top: 20px; display: flex; justify-content: space-between; align-items: flex-start; gap: 80px;">
+                                <div style="width: 750px;">
+                                    <table style="width: 100%; border-collapse: collapse;">
+                                        <tr>
+                                            <th style="text-align: center; border-bottom: 1px solid black; padding: 8px;">Mode de paiement</th>
+                                            <th style="text-align: center; border-bottom: 1px solid black; padding: 8px;">Intitulé banque</th>
+                                            <th style="text-align: center; border-bottom: 1px solid black; padding: 8px;">N° de compte</th>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: center; padding: 8px;">Virement</td>
+                                            <td style="text-align: center; padding: 8px;">Banque</td>
+                                            <td style="text-align: center; padding: 8px;">50 0002014500569752 51</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="header-info" style="min-width: 250px;">
+                                    <div><strong>Congés pris mois en cours: </strong><span>1.00</span></div>
+                                    <div><strong>Congés acquis mois en cours: </strong><span>1.50</span></div>
+                                    <div><strong>Solde congé: </strong><span>10.16</span></div>
+                                    <div><strong>Nombre d'heures d'absence: </strong><span>0.00</span></div>
+                                </div>
+                        </table>
+                    </div>
+                    
+                </div>
+                <div class="signatures">
+                    <div class="employer-signature">
+                        <p><strong>Signature et cachet employeur</strong></p>
+                        <div class="signature-box"></div>
+                    </div>
+                    <div class="employee-signature">
+                        <p><strong>Signature employé</strong></p>
+                        <div class="signature-box"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <div class="btn">
+        <button id="download-pdf">Télécharger en PDF</button>
+    </div>
+   
+      
+</body>
+</html>
